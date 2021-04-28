@@ -1,0 +1,26 @@
+[
+  {
+    "_id": {
+      "$oid": "601c2d208039698f1748e282"
+    },
+    "id": "2",
+    "name": "ProductB",
+    "category": "CategoryD",
+    "description": "Description C",
+    "price": {
+      "$numberDecimal": "66.99"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "601c2e988039698f1748e283"
+    },
+    "id": "1",
+    "name": "ProductA",
+    "category": "CategoryA",
+    "description": "Description",
+    "price": {
+      "$numberDecimal": "770"
+    }
+  }
+]

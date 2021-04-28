@@ -1,0 +1,86 @@
+<h2>Sign Up For Free</h2>
+<div class="card" style="width: 1000px;">
+    <div class="card-body">
+        <form [formGroup]="signUpForm">
+            <div class="form-group">
+                <label for="username">UserName:</label>
+                <input type="text" class="form-control" id="username" formControlName="username" #username
+                    placeholder="Enter username">
+                <small id="usernameHelp" class="form-text text-muted">Please Entre username:</small>
+                <div *ngIf="signUpForm.controls['username'].invalid && (signUpForm.controls['username'].dirty || signUpForm.controls['username'].touched)"
+                    class="alert alert-info">
+                    UserName Is Required
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" formControlName="name" #name placeholder="Enter name">
+                <small id="nameHelp" class="form-text text-muted">Please Entre Name:</small>
+                <div *ngIf="signUpForm.controls['name'].invalid && (signUpForm.controls['name'].dirty || signUpForm.controls['name'].touched)"
+                    class="alert alert-info">
+                    Name Is Required
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="text" class="form-control" id="phone" formControlName="phone" #phone
+                    placeholder="Enter Phone">
+                <small id="phoneHelp" class="form-text text-muted">Please Entre Phone:</small>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" formControlName="email" #email
+                    placeholder="Enter Email">
+                <small id="emailHelp" class="form-text text-muted">Please Entre Email:</small>
+                <div *ngIf="signUpForm.controls['email'].invalid && (signUpForm.controls['email'].dirty || signUpForm.controls['email'].touched)"
+                    class="alert alert-info">
+                    <span *ngIf="signUpForm.controls['email'].errors?.required">Email Is Required</span>
+                    <span *ngIf="signUpForm.controls['email'].errors?.email">please entre a valid email adresse</span>
+                    <span *ngIf="signUpForm.controls['email'].errors?.pattern">email must match a pattern</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" formControlName="password" #password
+                    placeholder="Enter Password">
+                <small id="passwordHelp" class="form-text text-muted">Please Entre Password:</small>
+                <div *ngIf="signUpForm.controls['password'].invalid && (signUpForm.controls['password'].dirty || signUpForm.controls['password'].touched)"
+                    class="alert alert-info">
+                    <span *ngIf="signUpForm.controls['password'].errors?.required">Please Entre Password </span>
+                    <span *ngIf="signUpForm.controls['password'].errors?.minlength">Password must be geather than or
+                        equal 5
+                        characters</span>
+                    <span *ngIf="signUpForm.controls['password'].errors?.pattern">Password must match a pattern</span>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confpassword">ConfirmPassword:</label>
+                <input type="password" class="form-control" id="confpassword" formControlName="confpassword"
+                    pattern="({{password.value}})" #confpassword placeholder="Enter Confirm Password">
+                <small id="confpasswordHelp" class="form-text text-muted">Please Entre Confirm Password:</small>
+                <div *ngIf="signUpForm.controls['confpassword'].invalid &&  (signUpForm.controls['confpassword'].dirty || signUpForm.controls['confpassword'].touched)"
+                    class="alert alert-info">
+                    <span *ngIf="signUpForm.controls['confpassword'].errors?.required">Please Entre confpassword </span>
+                    <span *ngIf="signUpForm.controls['confpassword'].errors?.pattern">Password not match
+                        {{password.value}}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <input type="radio" formControlName="gender" #gender value="M">
+                <label>M</label>
+                <input type="radio" formControlName="gender" #gender value="F">
+                <label>F</label>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" [disabled]="signUpForm.pristine || signUpForm.invalid "
+                    class="form-control btn btn-primary"
+                    (click)="addUser(username.value,name.value,email.value,password.value,phone.value,gender.value)">Register</button>
+            </div>
+            <span class="alert-danger">{{msg.value}}</span>
+
+        </form>
+    </div>
+</div>
